@@ -220,7 +220,7 @@ Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para ma
 
 **Peterson Silva**
 - GitHub: [@peterpaulodev](https://github.com/peterpaulodev)
-- LinkedIn: [Peterson Silva](https://linkedin.com/in/peterson-silva)
+- LinkedIn: [Peterson Silva](https://linkedin.com/in/peterson-paulo-marques)
 
 ---
 
