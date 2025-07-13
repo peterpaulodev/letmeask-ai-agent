@@ -1,15 +1,18 @@
 # LetMeAsk AI Agent 🤖💬
 
-Uma aplicação fullstack moderna para criação e gerenciamento de salas de perguntas e respostas, desenvolvida com as mais recentes tecnologias web.
+Uma aplicação fullstack moderna para criação e gerenciamento de salas de perguntas e respostas com **inteligência artificial integrada**, desenvolvida com as mais recentes tecnologias web.
 
 ## 📋 Sobre o Projeto
 
-O **LetMeAsk AI Agent** é uma plataforma que permite criar salas virtuais onde usuários podem fazer perguntas e obter respostas de forma organizada. Ideal para sessões de Q&A, eventos, aulas ou qualquer situação que necessite de interação estruturada entre participantes.
+O **LetMeAsk AI Agent** é uma plataforma inteligente que permite criar salas virtuais onde usuários podem fazer perguntas e obter respostas automáticas geradas por IA. A aplicação utiliza **Google Gemini AI** para transcrever áudios, gerar embeddings e fornecer respostas contextuais baseadas no conteúdo das aulas ou apresentações. Ideal para sessões de Q&A, eventos educacionais, aulas ou qualquer situação que necessite de interação estruturada entre participantes com suporte de IA.
 
 ### ✨ Funcionalidades
 
 - 🏠 **Criação de Salas**: Crie salas personalizadas com nome e descrição
 - ❓ **Sistema de Perguntas**: Adicione perguntas às salas de forma intuitiva
+- 🤖 **IA Integrada**: Respostas automáticas geradas por Google Gemini AI
+- 🎤 **Transcrição de Áudio**: Upload e transcrição automática de arquivos de áudio
+- 🧠 **Busca Semântica**: Sistema de embeddings para busca contextual
 - 📊 **Dashboard**: Visualize todas as salas com informações relevantes
 - 🔄 **Atualizações em Tempo Real**: Interface reativa com React Query
 - 📱 **Design Responsivo**: Interface moderna e adaptável a diferentes dispositivos
@@ -21,7 +24,8 @@ O **LetMeAsk AI Agent** é uma plataforma que permite criar salas virtuais onde 
 - **Fastify** - Framework web rápido e eficiente
 - **TypeScript** - Tipagem estática
 - **Drizzle ORM** - ORM moderno para PostgreSQL
-- **PostgreSQL** - Banco de dados relacional
+- **PostgreSQL** - Banco de dados relacional com suporte a vetores
+- **Google Gemini AI** - IA para transcrição, embeddings e geração de respostas
 - **Zod** - Validação de schemas
 - **Docker** - Containerização do banco de dados
 
@@ -60,6 +64,7 @@ npm install
 # Configure as variáveis de ambiente
 cp .env.example .env
 # Edite o arquivo .env com suas configurações
+# IMPORTANTE: Adicione sua chave da API do Google Gemini em GEMINI_API_KEY
 
 # Inicie o banco de dados com Docker
 docker-compose up -d
@@ -102,6 +107,7 @@ letmeask-ai-agent/
 │   │   │   └── seed.ts    # Dados de exemplo
 │   │   ├── http/          # Rotas da API
 │   │   │   └── routes/    # Endpoints organizados
+│   │   ├── services/      # Serviços de IA (Gemini)
 │   │   ├── env.ts         # Configuração de ambiente
 │   │   └── server.ts      # Servidor principal
 │   ├── docker-compose.yaml
@@ -128,7 +134,10 @@ letmeask-ai-agent/
 
 ### Perguntas (Questions)
 - `GET /rooms/:roomId/questions` - Lista perguntas de uma sala
-- `POST /rooms/:roomId/questions` - Cria uma pergunta em uma sala
+- `POST /rooms/:roomId/questions` - Cria uma pergunta em uma sala (com resposta automática por IA)
+
+### IA e Áudio
+- `POST /rooms/:roomId/upload-audio` - Upload e transcrição de áudio com IA
 
 ### Utilitários
 - `GET /health` - Status da API
@@ -172,6 +181,13 @@ O projeto utiliza **React Query** para gerenciamento eficiente do estado servido
 - `answer` (TEXT, NULLABLE)
 - `created_at` (TIMESTAMP)
 
+**Tabela: audio_chunks**
+- `id` (UUID, PK)
+- `room_id` (UUID, FK → rooms.id)
+- `transcription` (TEXT, NOT NULL)
+- `embeddings` (VECTOR[768], NOT NULL)
+- `created_at` (TIMESTAMP)
+
 ## 🚀 Deploy
 
 ### Backend
@@ -202,19 +218,34 @@ npm run preview
 4. Push para a branch (`git push origin feature/AmazingFeature`)
 5. Abra um Pull Request
 
-## 📝 Próximas Funcionalidades
+## 🤖 Funcionalidades de IA
 
-- [ ] Sistema de autenticação
-- [ ] Respostas automáticas com IA
-- [ ] Votação em perguntas
-- [ ] Moderação de conteúdo
-- [ ] Notificações em tempo real
-- [ ] Exportação de dados
-- [ ] Temas personalizáveis
+### Transcrição de Áudio
+- Upload de arquivos de áudio (MP3, WAV, etc.)
+- Transcrição automática usando Google Gemini AI
+- Processamento em português brasileiro
+
+### Sistema de Embeddings
+- Geração automática de embeddings para transcrições
+- Busca semântica baseada em similaridade vetorial
+- Armazenamento eficiente em PostgreSQL com extensão pgvector
+
+### Geração de Respostas
+- Respostas automáticas contextuais para perguntas
+- Baseadas no conteúdo das transcrições de áudio
+- Citação de trechos relevantes do contexto
+
+### Visual
+- Importante destacar que este projeto foca na integração e aplicação de inteligência artificial, priorizando funcionalidade ao invés de aspectos visuais elaborados.
+
+![Home Screen](assets/readme/home-screen.png)
+![Question Screen](assets/readme/question-screen.png)
+
 
 ## 📄 Licença
 
 Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
+Projeto criado juntamente ao NLW Agents (Rocketseat).
 
 ## 👨‍💻 Autor
 

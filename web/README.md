@@ -1,6 +1,15 @@
-# NLW Agents
+# 🤖 LetMeAsk AI Agent
 
-Este projeto foi desenvolvido durante um evento da Rocketseat e se chama NLW Agents. Ele é uma aplicação web construída utilizando diversas bibliotecas modernas para garantir uma experiência de desenvolvimento eficiente e uma aplicação performática.
+**LetMeAsk AI Agent** é uma plataforma interativa de perguntas e respostas potencializada por Inteligência Artificial. O projeto permite que usuários criem salas, façam perguntas por texto ou áudio, e recebam respostas inteligentes geradas automaticamente por IA.
+
+## ✨ Funcionalidades
+
+- 🏠 **Criação de Salas**: Crie salas personalizadas para organizar suas perguntas
+- 💬 **Perguntas por Texto**: Interface intuitiva para fazer perguntas escritas
+- 🎤 **Gravação de Áudio**: Grave perguntas por áudio com transcrição automática
+- 🤖 **Respostas com IA**: Receba respostas inteligentes e contextualizadas
+- ⚡ **Atualizações em Tempo Real**: Interface responsiva com feedback instantâneo
+- 🎨 **UI Moderna**: Design clean e responsivo com Tailwind CSS
 
 ## Tecnologias Utilizadas
 
