@@ -15,6 +15,13 @@
       "when": 1752062733935,
       "tag": "0001_lovely_skrulls",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1752360823373,
+      "tag": "0002_useful_george_stacy",
+      "breakpoints": true
     }
   ]
 }
